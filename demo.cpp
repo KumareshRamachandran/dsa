@@ -1,8 +1,19 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void solve() {
+#define el '\n';
 
+void solve() {
+    int n, cnt=0; cin >> n;
+    while(cnt++<10){
+        if((n+1)%3==0||(n-1)%3==0){
+            cout << "First" << el;
+            break;
+        }else{
+            n++;
+        }
+    }
+    if(cnt==10) cout << "Second" << el;
 }
 
 int main() {

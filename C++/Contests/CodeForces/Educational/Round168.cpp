@@ -1,38 +1,34 @@
-#include <iostream>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
-
-int calculate_time(const string& s) {
-    if (s.empty()) return 0;
-    int time = 2; 
-    for (size_t i = 1; i < s.size(); ++i) {
-        time += (s[i] == s[i - 1]) ? 1 : 2;
-    }
-    return time;
-}
 
 void solve() {
     string s;
     cin >> s;
-    
-    int max_time = 0;
-    string best_password;
-    
-    for (char ch = 'a'; ch <= 'z'; ++ch) {
-        for (size_t i = 0; i <= s.size(); ++i) {
-            string new_password = s.substr(0, i) + ch + s.substr(i);
-            int current_time = calculate_time(new_password);
-            if (current_time > max_time) {
-                max_time = current_time;
-                best_password = new_password;
-            }
+    bool isFound = false;
+    for (int i = 1; i < s.length(); i++)
+    {
+        if(s[i-1]==s[i]) {
+            char toChange;
+            if(s[i]=='z') toChange = s[i]-1;
+            else toChange = s[i] + 1;
+            s.insert(s.begin()+i, toChange);
+            isFound = true;
+            break;
         }
     }
-    
-    cout << best_password << endl;
+    if(!isFound) {
+        char toChange;
+        if(s[0]=='z') toChange = s[0]-1;
+        else toChange = s[0] + 1;
+        s.insert(s.begin(), toChange);
+    }
+    cout << s << '\n';
 }
 
+
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     int t;
     cin >> t;
     while (t--) {

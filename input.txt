@@ -1,5 +1,9 @@
 4
-a
-aaa
-aaaaaaaabb
-paaaassword
+4 2
+2 1 3 4
+4 1
+2 3 4 1
+3 5
+4 3 2
+6 2
+3 2 3 2 3 2

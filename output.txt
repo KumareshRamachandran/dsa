@@ -1,4 +1,4 @@
-ba
-abaa
-aaaaaaaabab
-paaaasasword
+1
+2
+0
+6
