@@ -3,10 +3,12 @@ using namespace std;
 
 #define endl '\n'
 #define int long long
+#define vin vector<int>
+
+const int MOD = (int)(1e9) + 7;
 
 void solve()
 {
-    
 }
 
 signed main()
