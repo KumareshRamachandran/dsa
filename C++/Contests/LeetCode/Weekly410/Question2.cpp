@@ -47,18 +47,56 @@ template <class T> void _print(set <T> v) {cerr << "[ "; for (T i : v) {_print(i
 template <class T> void _print(multiset <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
 template <class T, class V> void _print(map <T, V> v) {cerr << "[ "; for (auto i : v) {_print(i); cerr << " ";} cerr << "]";}
 
+bool sortcol(const vector<int>& v1, const vector<int>& v2)
+{
+    return v1[0] < v2[0];
+}
+
+int countGoodNodes(vector<vector<int>>& edges) {
+    int cnt = 0, n = edges.size()+1;
+    sort(all(edges), sortcol);
+    map<int, int, greater<int>> mpp;
+    vector<vector<int>> adj;
+    debug(edges)
+    for(int i=0; i<n; i++) {
+        adj.push_back({});
+    }
+    for(auto i: edges){
+        adj[i[0]].push_back(i[1]);
+    }
+    // debug(adj)
+    for(auto i: adj){
+        mpp[cnt++] = i.size();
+    }
+    int ans = 0;
+    for(auto i: mpp){
+        int cnt = 0;
+        for(auto &j: adj[i.first]){
+            cnt += mpp[j];
+            j = mpp[j];
+        }
+        mpp[i.first]+=cnt+1;
+    }
+    for(auto i: adj){
+        int prev; bool isEqual = true;
+        for (int j = 0; j < i.size(); j++)
+        {
+            if(j==0) prev = i[j];
+            if(prev!=i[j]){
+                isEqual = false;
+                break; 
+            }
+        }
+        if(isEqual) ans++;
+    }
+    // debug(adj)
+    return ans;
+}
 
 void solve()
 {
-	ll a, b, n;
-	cin >> a >> b >> n; int cnt = 0;
-	if(a>b) swap(a, b);
-	while(a<=n && b<=n){
-		if(cnt%2==0) a += b;
-		else b += a;
-		cnt++;
-	}
-	cout << cnt << nline;
+    vector<vector<int>> v = {{0,1},{1,2},{1,3},{1,4},{0,5},{5,6},{6,7},{7,8},{0,9},{9,10},{9,12},{10,11}};
+	cout << countGoodNodes(v) << nline;
 }
 
 int main()
@@ -68,8 +106,8 @@ int main()
 #endif
 	fastio();
 	int t = 1;
-	cin >> t;
-	cin.ignore();
+	// cin >> t;
+	// cin.ignore();
 	while (t--)
 	{
 		solve();

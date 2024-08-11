@@ -2,6 +2,8 @@
 
 using namespace std;
 
+
+
 #define fastio() ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 #define MOD 1000000007
 #define MOD1 998244353
@@ -47,18 +49,26 @@ template <class T> void _print(set <T> v) {cerr << "[ "; for (T i : v) {_print(i
 template <class T> void _print(multiset <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
 template <class T, class V> void _print(map <T, V> v) {cerr << "[ "; for (auto i : v) {_print(i); cerr << " ";} cerr << "]";}
 
-
 void solve()
 {
-	ll a, b, n;
-	cin >> a >> b >> n; int cnt = 0;
-	if(a>b) swap(a, b);
-	while(a<=n && b<=n){
-		if(cnt%2==0) a += b;
-		else b += a;
-		cnt++;
-	}
-	cout << cnt << nline;
+	ll x, y, k;
+    cin >> x >> y >> k;
+    x *= k, y *= k;
+    if(k%2==1){
+        cout << x << " " << y << nline;
+        for(int i=1; i<=(k-1)/2; i++){
+            cout << i << " " << i << nline;
+            cout << -i << " " << -i << nline;
+        }
+    }else{
+        ll xf = x+1, yf = y-1, xr = x-xf, yr = y-yf;
+        cout << xf << " " << yf << nline;
+        cout << xr << " " << yr << nline;
+        for(int i=1; i<=(k-2)/2; i++){
+            cout << i << " " << i << nline;
+            cout << -i << " " << -i << nline;
+        }
+    }
 }
 
 int main()
