@@ -47,24 +47,23 @@ template <class T> void _print(set <T> v) {cerr << "[ "; for (T i : v) {_print(i
 template <class T> void _print(multiset <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
 template <class T, class V> void _print(map <T, V> v) {cerr << "[ "; for (auto i : v) {_print(i); cerr << " ";} cerr << "]";}
 
-
 void solve()
 {
-	int n;
-	string s;
-	cin >> n >> s;
-	map<int, int> mpp;
-	int cnt=45;
-	mpp[0]++;
-	for(auto i: s){
-		if(i=='<'){
-			cnt++;
-		}else{
-			cnt--;
-		}
-		mpp[cnt]++;
-	}
-	cout << mpp.size() << nline;
+	int n; cin >> n;
+    map<int, int> mpp; int cnt = 1;
+    for(int i=0; i<n; i++){
+        int value; cin >> value;
+        if(i==0) {
+            mpp[value]++;
+        }else{
+            if(mpp.find(value-1) != mpp.end() || mpp.find(value+1)!=mpp.end()){
+                mpp[value]++;
+                cnt++;
+            }
+        }
+    }
+    if(cnt==n) cout << "Yes" << nline;
+    else cout << "No" << nline;
 }
 
 int main()

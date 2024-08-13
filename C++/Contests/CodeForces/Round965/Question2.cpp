@@ -47,28 +47,9 @@ template <class T> void _print(set <T> v) {cerr << "[ "; for (T i : v) {_print(i
 template <class T> void _print(multiset <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
 template <class T, class V> void _print(map <T, V> v) {cerr << "[ "; for (auto i : v) {_print(i); cerr << " ";} cerr << "]";}
 
-
-
 void solve()
 {
-	int n;
-    cin >> n;
-    vector<int> v(n);
-    vector<int> ans(n);
-    for(auto &i: v){
-        cin >> i;
-    }
-    int left = 0, right = n-1;
-    int idx = 0;
-    while(left<=right){
-        if(left==right){
-            ans[idx] = v[left];
-            break;
-        }
-        ans[idx++] = v[right--];
-        ans[idx++] = v[left++];
-    }
-    debug(ans)
+    
 }
 
 int main()

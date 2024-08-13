@@ -47,27 +47,40 @@ template <class T> void _print(set <T> v) {cerr << "[ "; for (T i : v) {_print(i
 template <class T> void _print(multiset <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
 template <class T, class V> void _print(map <T, V> v) {cerr << "[ "; for (auto i : v) {_print(i); cerr << " ";} cerr << "]";}
 
-
+#define int long long
 void solve()
 {
-	int n;
-	string s;
-	cin >> n >> s;
-	map<int, int> mpp;
-	int cnt=45;
-	mpp[0]++;
-	for(auto i: s){
-		if(i=='<'){
-			cnt++;
-		}else{
-			cnt--;
-		}
-		mpp[cnt]++;
-	}
-	cout << mpp.size() << nline;
+	int n; cin >> n;
+    map<int, vector<int>> mpp;
+    for(int i=0; i<n; i++){
+        int value; cin >> value;
+        mpp[value].push_back(i);
+    }
+    int m=1; cin >> m;
+    while(m--){
+        string s; cin >> s;
+        map<int, vector<int>> temp(mpp);
+        map<char, vector<int>> charMpp;
+        if(s.size()!=n){
+            cout << "NO" << nline;
+            continue;
+        }
+        for(int i=0; i<s.size(); i++){
+            charMpp[s[i]].push_back(i);
+        } int cnt = 0;
+        for(auto i: charMpp){
+            for(auto j: temp){
+                if(i.second==j.second){
+                    cnt++;
+                }
+            }
+        }
+        if(cnt==charMpp.size()) cout << "YES" << nline;
+        else cout << "NO" << nline;
+    }
 }
 
-int main()
+signed main()
 {
 #ifndef ONLINE_JUDGE
 	freopen("error.txt", "w", stderr);
