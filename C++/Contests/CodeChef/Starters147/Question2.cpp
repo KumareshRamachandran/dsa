@@ -13,8 +13,8 @@ using namespace std;
 #define ff first
 #define ss second
 #define PI 3.141592653589793238462
-#define fAll(x, n) for(int x=0; x<n; x++)
-#define fRange(x, start, end) for(int x=start; x<=end; x++)
+#define fAll(x, n) for(int x=0; x<n; i++)
+#define fRange(x, n) for(int x=1; x<=n; i++)
 #define set_bits __builtin_popcountll
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
@@ -49,9 +49,16 @@ template <class T> void _print(set <T> v) {cerr << "[ "; for (T i : v) {_print(i
 template <class T> void _print(multiset <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
 template <class T, class V> void _print(map <T, V> v) {cerr << "[ "; for (auto i : v) {_print(i); cerr << " ";} cerr << "]";}
 
+
 void solve()
 {
-	
+	int x, y;
+	cin >> x >> y;
+	if(x>y){
+		cout << x+(x-y) << nline;
+	}else{
+		cout << -1 << nline;
+	}
 }
 
 int main()
