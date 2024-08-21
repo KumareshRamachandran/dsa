@@ -13,10 +13,8 @@ using namespace std;
 #define ff first
 #define ss second
 #define PI 3.141592653589793238462
-#define fAll(x, n) for(int x=0; x<n; x++)
-#define rAll(x, n) for(int x=n-1; x>=0; x--)
-#define fRange(x, start, end) for(int x=start; x<=end; x++)
-#define rRange(x, start, end) for(int x=start; x>=end; x--)
+#define fAll(x, n) for(int x=0; x<n; i++)
+#define fRange(x, n) for(int x=1; x<=n; i++)
 #define set_bits __builtin_popcountll
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
@@ -51,14 +49,16 @@ template <class T> void _print(set <T> v) {cerr << "[ "; for (T i : v) {_print(i
 template <class T> void _print(multiset <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
 template <class T, class V> void _print(map <T, V> v) {cerr << "[ "; for (auto i : v) {_print(i); cerr << " ";} cerr << "]";}
 
-
-void solve()
+void test()
 {
-	int t = 333;
+    cout << 500 << nline;
+    int t = 333;
+    cout << 100 << nline;
 	for(int i=1; i<=100; i++){
 		cout << i << " ";
 	}
 	cout << nline;
+    cout << 100 << nline;
 	for(int i=100; i>0; i--){
 		cout << i << " ";
 	}
@@ -67,16 +67,19 @@ void solve()
 	while (t-->1)
 	{
 		if(t&1){
+            cout << 100 << nline;
 			for(int i=1; i<=100; i++){
 				cout << i << " ";
 			}
 			cout << nline;
+            cout << 100 << nline;
 			for(int i=100; i>0; i--){
 				cout << i << " ";
 			}
 			cout << nline;
 			continue;
 		}
+        cout << 100 << nline;
 		for(int i=100; i>0; i--){
 			cout << k << " ";
 		}
@@ -84,6 +87,19 @@ void solve()
 		k--;
 		if(k==0) k = 100;
 	}
+}
+void solve()
+{
+    int n; cin >> n;
+    vector<int> v(n);
+    map<int, int> mpp;
+    int cnt = 0;
+    for(auto &i: v){
+        cin >> i;
+        mpp[i]++;
+        cnt = max(cnt, mpp[i]);
+    }
+    cout << n-cnt << nline;
 }
 
 int main()
@@ -93,11 +109,11 @@ int main()
 #endif
 	fastio();
 	int t = 1;
-	cin >> t;
-	cin.ignore();
+	// cin >> t;
+	// cin.ignore();
 	while (t--)
 	{
-		solve();
+		test();
 	}
 	return 0;
 }

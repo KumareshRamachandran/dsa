@@ -13,10 +13,8 @@ using namespace std;
 #define ff first
 #define ss second
 #define PI 3.141592653589793238462
-#define fAll(x, n) for(int x=0; x<n; x++)
-#define rAll(x, n) for(int x=n-1; x>=0; x--)
-#define fRange(x, start, end) for(int x=start; x<=end; x++)
-#define rRange(x, start, end) for(int x=start; x>=end; x--)
+#define fAll(x, n) for(int x=0; x<n; i++)
+#define fRange(x, n) for(int x=1; x<=n; i++)
 #define set_bits __builtin_popcountll
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
@@ -51,39 +49,23 @@ template <class T> void _print(set <T> v) {cerr << "[ "; for (T i : v) {_print(i
 template <class T> void _print(multiset <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
 template <class T, class V> void _print(map <T, V> v) {cerr << "[ "; for (auto i : v) {_print(i); cerr << " ";} cerr << "]";}
 
+int countKConstraintSubstrings(string s, int k) {
+    int ans = 0;
+    for(int i=0; i<s.size(); i++){
+        int ones = 0, zeros = 0;
+        for(int j=i; j<s.size(); j++){
+            if(s[j]=='0') zeros++;
+            else ones++;
+            if(ones<=k || zeros<=k) ans++;
+            else break;
+        }
+    }
+    return ans;
+}
 
 void solve()
 {
-	int t = 333;
-	for(int i=1; i<=100; i++){
-		cout << i << " ";
-	}
-	cout << nline;
-	for(int i=100; i>0; i--){
-		cout << i << " ";
-	}
-	cout << nline;
-	int k = 100;
-	while (t-->1)
-	{
-		if(t&1){
-			for(int i=1; i<=100; i++){
-				cout << i << " ";
-			}
-			cout << nline;
-			for(int i=100; i>0; i--){
-				cout << i << " ";
-			}
-			cout << nline;
-			continue;
-		}
-		for(int i=100; i>0; i--){
-			cout << k << " ";
-		}
-		cout << nline;
-		k--;
-		if(k==0) k = 100;
-	}
+
 }
 
 int main()
@@ -93,8 +75,8 @@ int main()
 #endif
 	fastio();
 	int t = 1;
-	cin >> t;
-	cin.ignore();
+	// cin >> t;
+	// cin.ignore();
 	while (t--)
 	{
 		solve();
