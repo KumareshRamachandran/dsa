@@ -13,10 +13,8 @@ using namespace std;
 #define ff first
 #define ss second
 #define PI 3.141592653589793238462
-#define fAll(x, n) for(int x=0; x<n; x++)
-#define rAll(x, n) for(int x=n-1; x>=0; x--)
-#define fRange(x, start, end) for(int x=start; x<=end; x++)
-#define rRange(x, start, end) for(int x=start; x>=end; x--)
+#define fAll(x, n) for(int x=0; x<n; i++)
+#define fRange(x, n) for(int x=1; x<=n; i++)
 #define set_bits __builtin_popcountll
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
@@ -54,22 +52,22 @@ template <class T, class V> void _print(map <T, V> v) {cerr << "[ "; for (auto i
 
 void solve()
 {
-	int n, k;
-	cin >> n >> k;
-	int ans = INT_MAX;
-	int fAns = 2;
-	while(n--){
-		int value; cin >> value;
-		if(k==4){
-			if(value%k==2 && fAns>0) fAns--;
-		}
-		if(value%k==0){
-			ans = 0;
-		}
-		ans = min(ans, ((value/k)+1)*k-value);
-	}
-	if(k==4) ans = min(ans, fAns);
-	cout << ans << nline;
+    int n, x, y;
+    cin >> n >> x >> y;
+    string s; cin >> s;
+    int a = 0, b = 0, cnt = 0;
+    for(auto i: s){
+        if(i=='R') a += 1;
+        else if(i=='L') a -= 1;
+        else if(i=='D') b -= 1;
+        else b += 1;
+        cnt++;
+        if(abs(a-x)+abs(b-y)==cnt){
+            cout << "Yes" << nline;
+            return;
+        }
+    }
+    cout << "No" << nline;
 }
 
 int main()
