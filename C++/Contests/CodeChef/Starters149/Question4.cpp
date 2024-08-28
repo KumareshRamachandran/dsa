@@ -13,9 +13,13 @@ using namespace std;
 #define ff first
 #define ss second
 #define PI 3.141592653589793238462
-#define allfor(x, n) for(int x=0; x<n; i++)
-#define allfor1(x, n) for(int x=1; x<=n; i++)
+#define fall(x, n) for(int x=0; x<n; x++)
+#define rall(x, n) for(int x=n-1; x>=0; x--)
+#define frange(x, start, end) for(int x=start; x<=end; x++)
+#define rrange(x, start, end) for(int x=start; x>=end; x--)
 #define set_bits __builtin_popcountll
+#define vi vector<int> 
+#define vii vector<vector<int>>
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
@@ -52,22 +56,51 @@ template <class T, class V> void _print(map <T, V> v) {cerr << "[ "; for (auto i
 
 void solve()
 {
-	for (int i = 0; i < 100; i++)
-	{
-		cout << i+1 << nline;
-	}
-	
+	vi garbage;
+    ll ans = 0;
+    int n; cin >> n;
+    vi v(n);
+    for(int i=0; i<n; i++){
+        cin >> v[i];
+        ans += abs(v[i]);
+    }
+    sort(all(v));
+    debug(v)
+    debug(ans)
+    int neg = -1, pos = -1, negCnt = 0, zero = 0;
+    fall(i, n){
+        if(v[i] ==0 ) zero = 1;
+        if(v[i]>0 && pos == -1){
+            pos = i;
+        }
+        if(v[i]<0) neg = i, negCnt++;
+    }
+    if(negCnt%2==0 || zero){
+        cout << ans << nline;
+        return;
+    }
+    else if((negCnt%2==1) && (pos != -1 && neg != -1)){
+        if(abs(v[pos])<abs(v[neg])){
+            ans -= 2*v[pos];
+    debug(ans)
+        }else{
+            ans -= 2*abs(v[neg]);
+        }
+    }else if(negCnt%2==1){
+        ans -= 2*abs(v[neg]);
+    }
+    cout << ans << nline;
 }
 
-int main()
+signed main()
 {
 #ifndef ONLINE_JUDGE
 	freopen("error.txt", "w", stderr);
 #endif
 	fastio();
 	int t = 1;
-	// cin >> t;
-	// cin.ignore();
+	cin >> t;
+	cin.ignore();
 	while (t--)
 	{
 		solve();

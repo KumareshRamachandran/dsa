@@ -13,9 +13,13 @@ using namespace std;
 #define ff first
 #define ss second
 #define PI 3.141592653589793238462
-#define allfor(x, n) for(int x=0; x<n; i++)
-#define allfor1(x, n) for(int x=1; x<=n; i++)
+#define fall(x, n) for(int x=0; x<n; x++)
+#define rall(x, n) for(int x=n-1; x>=0; x--)
+#define frange(x, start, end) for(int x=start; x<=end; x++)
+#define rrange(x, start, end) for(int x=start; x>=end; x--)
 #define set_bits __builtin_popcountll
+#define vi vector<int> 
+#define vii vector<vector<int>>
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
@@ -52,22 +56,41 @@ template <class T, class V> void _print(map <T, V> v) {cerr << "[ "; for (auto i
 
 void solve()
 {
-	for (int i = 0; i < 100; i++)
-	{
-		cout << i+1 << nline;
-	}
-	
+	int n; cin >> n;
+    vi v(n);
+    for(auto &i: v) cin >> i;
+    int rightEnd = -1;
+    int lStart = -1;
+    fall(i, n){
+        if(v[i]>0){
+            lStart = i;
+            break;
+        }
+    }
+    rall(i, n){
+        if(v[i]>0){
+            rightEnd = i;
+            break;
+        }
+    }
+    if(rightEnd==-1 || lStart==-1){
+        cout << 0 << nline;
+        return;
+    }
+    int ans = 0;
+    frange(i, lStart, rightEnd) if(v[i]<0) ans++;
+    cout << ans << nline;
 }
 
-int main()
+signed main()
 {
 #ifndef ONLINE_JUDGE
 	freopen("error.txt", "w", stderr);
 #endif
 	fastio();
 	int t = 1;
-	// cin >> t;
-	// cin.ignore();
+	cin >> t;
+	cin.ignore();
 	while (t--)
 	{
 		solve();
