@@ -20,7 +20,6 @@ using namespace std;
 #define set_bits __builtin_popcountll
 #define vi vector<int> 
 #define vii vector<vector<int>>
-#define initValues(i, v) for(auto &i: v) cin >> i;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
@@ -54,16 +53,15 @@ template <class T> void _print(set <T> v) {cerr << "[ "; for (T i : v) {_print(i
 template <class T> void _print(multiset <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
 template <class T, class V> void _print(map <T, V> v) {cerr << "[ "; for (auto i : v) {_print(i); cerr << " ";} cerr << "]";}
 
-int searchInsert(vector<int>& nums, int target) {
-	auto idx = lower_bound(nums.begin(), nums.end(), target)-nums.begin();
-	if((nums[idx])==target) return idx;
-	else return idx+1;
-}
 
 void solve()
 {
-	vi v = {1,3,5,6};
-	cout << searchInsert(v, 5) << nline;
+	int l, r; cin >> l >> r;
+	int cnt = 0;
+	frange(i, l, r){
+		if(i%3==0) cnt++;
+	}
+	cout << cnt/2 << nline;
 }
 
 signed main()
@@ -73,8 +71,8 @@ signed main()
 #endif
 	fastio();
 	int t = 1;
-	// cin >> t;
-	// cin.ignore();
+	cin >> t;
+	cin.ignore();
 	while (t--)
 	{
 		solve();
