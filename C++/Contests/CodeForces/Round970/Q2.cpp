@@ -18,9 +18,8 @@ using namespace std;
 #define frange(x, start, end) for(int x=start; x<=end; x++)
 #define rrange(x, start, end) for(int x=start; x>=end; x--)
 #define set_bits __builtin_popcountll
-#define vi vector<int>
+#define vi vector<int> 
 #define vii vector<vector<int>>
-#define initValues(i, v) for(auto &i: v) cin >> i;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
@@ -57,21 +56,43 @@ template <class T, class V> void _print(map <T, V> v) {cerr << "[ "; for (auto i
 
 void solve()
 {
-	cout << "Hello" << nline;
+	int n; string s;
+    cin >> n >> s;
+    if(floor(sqrt(n))==ceil(sqrt(n))){
+        int k = sqrt(n);
+        frange(i, 1, k){
+            frange(j, 1, k){
+                debug((i-1)*k+j-1)
+                if(i==1 || i==k || j==1 || j==k){
+                    if(s[(i-1)*k+j-1]!='1'){
+                        debug(s[(i-1)*k+j-1])  debug(j)
+                        cout << "No" << nline;
+                        return;
+                    }
+                }else{
+                    if(s[(i-1)*k+j-1]!='0'){
+                        cout << "No" << nline;
+                        return;
+                    }
+                }
+            }
+        }
+        cout << "Yes" << nline;
+    }else{
+        cout << "No" << nline;
+    }
 }
 
 signed main()
 {
 #ifndef ONLINE_JUDGE
-	freopen("input.txt", "r", stdin);
-	freopen("output.txt", "w", stdout);
 	freopen("error.txt", "w", stderr);
 #endif
 	fastio();
 	int t = 1;
 	cin >> t;
 	cin.ignore();
-	while (t)
+	while (t--)
 	{
 		solve();
 	}

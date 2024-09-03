@@ -18,9 +18,8 @@ using namespace std;
 #define frange(x, start, end) for(int x=start; x<=end; x++)
 #define rrange(x, start, end) for(int x=start; x>=end; x--)
 #define set_bits __builtin_popcountll
-#define vi vector<int>
+#define vi vector<int> 
 #define vii vector<vector<int>>
-#define initValues(i, v) for(auto &i: v) cin >> i;
 #define sz(x) ((int)(x).size())
 #define all(x) (x).begin(), (x).end()
 
@@ -57,21 +56,34 @@ template <class T, class V> void _print(map <T, V> v) {cerr << "[ "; for (auto i
 
 void solve()
 {
-	cout << "Hello" << nline;
+	int a, b;
+    cin >> a >> b;
+    b %= 2;
+    if(b)
+    {
+        if(a>=2*b){
+            a -= 2*b;
+            if(a&1) cout << "No" << nline;
+            else cout << "Yes" << nline;
+        }else{
+            cout << "No" << nline;
+        }
+    }else{
+        if(a&1) cout << "No" << nline;
+        else cout << "Yes" << nline;
+    }
 }
 
 signed main()
 {
 #ifndef ONLINE_JUDGE
-	freopen("input.txt", "r", stdin);
-	freopen("output.txt", "w", stdout);
 	freopen("error.txt", "w", stderr);
 #endif
 	fastio();
 	int t = 1;
 	cin >> t;
 	cin.ignore();
-	while (t)
+	while (t--)
 	{
 		solve();
 	}

@@ -18,7 +18,7 @@ using namespace std;
 #define frange(x, start, end) for(int x=start; x<=end; x++)
 #define rrange(x, start, end) for(int x=start; x>=end; x--)
 #define set_bits __builtin_popcountll
-#define vi vector<int>
+#define vi vector<int> 
 #define vii vector<vector<int>>
 #define initValues(i, v) for(auto &i: v) cin >> i;
 #define sz(x) ((int)(x).size())
@@ -57,21 +57,28 @@ template <class T, class V> void _print(map <T, V> v) {cerr << "[ "; for (auto i
 
 void solve()
 {
-	cout << "Hello" << nline;
+    int n; cin >> n;
+    vi v(n);
+    initValues(i, v);
+    string s; cin >> s;
+    vi vis(n, 0);
+    fall(i, n){
+        int cnt = 0;
+        int k = i;
+        
+    }
 }
 
 signed main()
 {
 #ifndef ONLINE_JUDGE
-	freopen("input.txt", "r", stdin);
-	freopen("output.txt", "w", stdout);
 	freopen("error.txt", "w", stderr);
 #endif
 	fastio();
 	int t = 1;
 	cin >> t;
 	cin.ignore();
-	while (t)
+	while (t--)
 	{
 		solve();
 	}
