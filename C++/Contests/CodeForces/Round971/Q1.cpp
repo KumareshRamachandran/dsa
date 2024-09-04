@@ -54,28 +54,16 @@ template <class T> void _print(set <T> v) {cerr << "[ "; for (T i : v) {_print(i
 template <class T> void _print(multiset <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
 template <class T, class V> void _print(map <T, V> v) {cerr << "[ "; for (auto i : v) {_print(i); cerr << " ";} cerr << "]";}
 
-bool check(int n, int x, int y, int k){
-	if(k<x) return false;
-	int cnt = 1;
-	k -= x;
-	cnt += k/x+k/y;
-	return cnt >= n;
-}
+
 void solve()
 {
-	int n, x, y;
-	cin >> n >> x >> y;
-	if(x>y) swap(x, y);
-	int left = 0, right = y * n;
-	while(left+1<right){
-		int mid = left + (right-left)/2;
-		if(check(n, x, y, mid)){
-			right = mid;
-		}else{
-			left = mid;
-		}
-	}
-	cout << right << nline;
+    int a, b;
+    cin >> a >> b;
+    int ans = INT_MAX;
+    frange(i, a, b){
+        ans = min(ans, (i-a)+(b-i));
+    }
+    cout << ans << nline;
 }
 
 signed main()
@@ -85,8 +73,8 @@ signed main()
 #endif
 	fastio();
 	int t = 1;
-	// cin >> t;
-	// cin.ignore();
+	cin >> t;
+	cin.ignore();
 	while (t--)
 	{
 		solve();
