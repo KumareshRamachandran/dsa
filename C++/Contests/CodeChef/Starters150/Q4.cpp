@@ -54,42 +54,34 @@ template <class T> void _print(set <T> v) {cerr << "[ "; for (T i : v) {_print(i
 template <class T> void _print(multiset <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
 template <class T, class V> void _print(map <T, V> v) {cerr << "[ "; for (auto i : v) {_print(i); cerr << " ";} cerr << "]";}
 
-bool good(string t, string p, vi v, int mid){
-	debug(t) debug(mid)
-	sort(v.begin(), v.begin()+mid, greater<int>());
-	for(int i=0; i<mid; i++){
-		t.erase(t.begin()+v[i]-1);
-	}
-	debug(t)
-	int k=0; string Str = "";
-	for (int i = 0; i < sz(t) && k<sz(p); i++)
-	{
-		if (t[i] == p[k])
-		{
-			Str += t[i];
-			k++;
-		}
-	}
-	debug(Str)
-	return Str == p;
-}
 
 void solve()
 {
-	string t, p;
-	cin >> t >> p;
-	vi v(sz(t));
-	initValues(i, v);
-	int left = 0, right = sz(t);
-	while(left+1<right){
-		int mid = (left+right)/2;
-		if(good(t, p, v, mid)){
-			left = mid;
-		}else{
-			right = mid;
-		}
-	}
-	cout << left << nline;
+    int n; cin >> n;
+    vector<int> v(n);
+    map<int, int> mpp; int cnt = 0, ele = 1;
+    for(auto &i: v){
+        cin >> i;
+        if(i!=0){
+            mpp[i]++;
+            if(cnt<mpp[i]){
+                cnt = mpp[i];
+                ele = i;
+            }
+        }
+    }
+    for(auto &i: v){
+        if(i==0) i = ele;
+    }
+    int cnt1 = 0;
+    for(int i=0; i<n; i++){
+        for(int j=i+1; j<n; j++){
+            if(v[i]==v[j]){
+                cnt1++;
+            }
+        }
+    }
+    cout << cnt1 << '\n';
 }
 
 signed main()
@@ -99,8 +91,8 @@ signed main()
 #endif
 	fastio();
 	int t = 1;
-	// cin >> t;
-	// cin.ignore();
+	cin >> t;
+	cin.ignore();
 	while (t--)
 	{
 		solve();
