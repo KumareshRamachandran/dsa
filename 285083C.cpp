@@ -53,10 +53,35 @@ template <class T> void _print(vector <T> v) {cerr << "[ "; for (T i : v) {_prin
 template <class T> void _print(set <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
 template <class T> void _print(multiset <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
 
+int n, k;
+vi v;
+bool good(ll mid){
+    int cnt = 1;
+    int prev = v[0];
+    frange(i, 1, n-1){
+        if(abs(prev-v[i])>=mid){
+            cnt++;
+            prev = v[i];
+        }
+    }
+    return cnt >= k;
+}
 
 void solve()
 {
-	
+    cin >> n >> k;
+    v.resize(n);
+    initValues(i, v);
+    ll l = 0, r = 1;
+    while(good(r)) r *= 2;
+    while(l+1<r){
+        ll mid = (l+r)/2;
+        debug(mid)
+        if(good(mid)) l = mid;
+        else r = mid;
+        cerr << l << " " << r << nline;
+    }
+    cout << l << nline;
 }
 
 signed main()
