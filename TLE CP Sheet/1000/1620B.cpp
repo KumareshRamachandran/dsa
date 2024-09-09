@@ -59,23 +59,13 @@ void solve()
 	int w, h;
     cin >> w >> h;
     ll ans = 0;
-    int k; cin >> k;
-    vector<ll> y0(k);
-    initValues(i, y0);
-    ans = max(ans, (y0[k-1]-y0[0])*h*1ll);
-    cin >> k;
-    vector<ll> yh(k);
-    initValues(i, yh);
-    ans = max(ans, (yh[k-1]-yh[0])*h*1ll);
-    cin >> k;
-    vector<ll> x0(k);
-    initValues(i, x0);
-    ans = max(ans, (x0[k-1]-x0[0])*w*1ll);
-    cin >> k;
-    vector<ll> xh(k);
-    initValues(i, xh);
-    ans = max(ans, (xh[k-1]-xh[0])*w*1ll);
-    debug(x0) debug(xh) debug(y0) debug(yh)
+    fall(i, 4){
+        int k; cin >> k;
+        vector<ll> v(k);
+        initValues(i, v);
+        int m = i<2 ? h : w;
+        ans = max(ans, (v[k-1]-v[0])*1ll*m);
+    }
     cout << ans << nline;
 }
 
