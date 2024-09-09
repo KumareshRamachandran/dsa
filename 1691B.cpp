@@ -53,87 +53,48 @@ template <class T> void _print(vector <T> v) {cerr << "[ "; for (T i : v) {_prin
 template <class T> void _print(set <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
 template <class T> void _print(multiset <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
 
-struct ListNode {
-     int val;
-     ListNode *next;
-     ListNode() : val(0), next(nullptr) {}
-     ListNode(int x) : val(x), next(nullptr) {}
-     ListNode(int x, ListNode *next) : val(x), next(next) {}
- };
-
-void insertNode(ListNode*& head, int val) {
-    ListNode* newNode = new ListNode(val);
-    if (!head) {
-        head = newNode;  // If the list is empty, new node becomes the head
-    } else {
-        ListNode* temp = head;
-        while (temp->next) {
-            temp = temp->next;  // Traverse to the end of the list
-        }
-        temp->next = newNode;  // Insert the new node at the end
+void suffle(vi &v, int left, int right){
+    int length = right-left+1;
+    if(length&1){
+        swap(v[left], v[right]);
+    }
+    for (int i = left; i < right; i+=2)
+    {
+        swap(v[i], v[i+1]);
     }
 }
-
-// Function to convert vector<int> to linked list
-ListNode* vectorToList(const std::vector<int>& vec) {
-    ListNode* head = nullptr;
-    for (int val : vec) {
-        insertNode(head, val);
-    }
-    return head;
-}
-
-// Function to print the linked list
-void printList(ListNode* head) {
-    while (head) {
-        cout << head->val << " ";
-        head = head->next;
-    }
-    cout << endl;
-}
-
-
-vector<ListNode*> splitListToParts(ListNode* head, int k) {
-		vector<ListNode*> ans(k, nullptr);
-		if (head == nullptr) return ans;
-
-		int cnt = 0;
-		ListNode* temp = head;
-		while (temp != nullptr) {
-			cnt++;
-			temp = temp->next;
-		}
-
-		int partSize = cnt / k;     
-		int extraNodes = cnt % k; 
-
-		ListNode* curr = head;
-		for (int i = 0; i < k && curr != nullptr; i++) {
-			ans[i] = curr;
-			int currentPartSize = partSize + (extraNodes > 0 ? 1 : 0);
-			extraNodes--;
-
-			for (int j = 1; j < currentPartSize; j++) {
-				curr = curr->next;
-			}
-
-			ListNode* nextPart = curr->next;
-			curr->next = nullptr; 
-			curr = nextPart;      
-		}
-
-		return ans;
-		
-    }
 
 void solve()
 {
-	vector<int> v = {1,2,3,4,5,6,7,8,9,10};
-	ListNode* head = vectorToList(v);
-	vector<ListNode*> vl = splitListToParts(head, 3);
-	for(auto i: vl){
-		printList(i);
-	}
+	int n;
+    cin >> n;
+    vi v(n);
+    initValues(i, v);
+    if(n==1) {
+        cout << -1 << nline;
+        return;
+    }
+    vi ans(n);
+    iota(all(ans), 1);
+    int left = 0, right = 0;
+    while (right<n)
+    {
+        while(right<n && v[left]==v[right]){
+            right++;
+        }
+        
+        if(right-left==1){
+            cout << -1 << nline;
+            return;
+        }
+        suffle(ans, left, right-1);
+        left = right;
+        right = left;
+    }
+    for(auto i: ans){
+        cout << i << " ";
+    }
+    cout << nline;
 }
 
 signed main()
@@ -143,8 +104,8 @@ signed main()
 #endif
 	fastio();
 	int t = 1;
-	// cin >> t;
-	// cin.ignore();
+	cin >> t;
+	cin.ignore();
 	while (t--)
 	{
 		solve();

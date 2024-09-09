@@ -1,7 +1,0 @@
-i 0
-j 1
-nums[j] 1
-nums[i] 5
-j 3
-nums[j] 1
-nums[i] 8
