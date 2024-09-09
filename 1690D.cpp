@@ -54,10 +54,36 @@ template <class T> void _print(set <T> v) {cerr << "[ "; for (T i : v) {_print(i
 template <class T> void _print(multiset <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
 
 
-
 void solve()
 {
-	
+	int n, k;
+    cin >> n >> k;
+    string s; cin >> s;
+    int bs = 0, ws = 0, left = 0, right = k-1;
+    if(k==1){
+        int idx = s.find("B");
+        if(idx>-1){
+            cout << 0 << nline;
+            return;
+        }
+    }
+    fall(i, k){
+        if(s[i]=='B') bs++;
+        else ws++;
+    }
+    int ans = ws;
+    while(right<n-1){
+        if(s[left]=='B') bs--;
+        else ws--;
+        left++; right++;
+        if(s[right]=='B') bs++;
+        else ws++;
+        cerr << bs << " " << ws << nline;
+        cerr << left << " " << right << nline;
+        debug(s.substr(left, k))
+        ans = min(ans, ws);
+    }
+    cout << ans << nline;
 }
 
 signed main()
@@ -67,8 +93,8 @@ signed main()
 #endif
 	fastio();
 	int t = 1;
-	// cin >> t;
-	// cin.ignore();
+	cin >> t;
+	cin.ignore();
 	while (t--)
 	{
 		solve();
