@@ -1,0 +1,31 @@
+pr {c,c}
+pr {c,c}
+a.substr(i, ap-i) cc
+pr {c,c}
+pr {c,c}
+pr {b,b}
+a.substr(i, ap-i) ccb
+pr {c,c}
+a.substr(i, ap-i) c
+a.substr(i, ap-i) 
+a.substr(i, ap-i) 
+pr {c,c}
+a.substr(i, ap-i) c
+pr {c,c}
+a.substr(i, ap-i) c
+pr {c,c}
+a.substr(i, ap-i) c
+pr {c,c}
+pr {b,b}
+a.substr(i, ap-i) cb
+a.substr(i, ap-i) 
+a.substr(i, ap-i) 
+pr {c,c}
+a.substr(i, ap-i) c
+a.substr(i, ap-i) 
+a.substr(i, ap-i) 
+a.substr(i, ap-i) 
+pr {b,b}
+a.substr(i, ap-i) b
+a.substr(i, ap-i) 
+a.substr(i, ap-i) 
