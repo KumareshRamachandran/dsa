@@ -18,7 +18,7 @@ using namespace std;
 #define frange(x, start, end) for(int x=start; x<=end; x++)
 #define rrange(x, start, end) for(int x=start; x>=end; x--)
 #define set_bits __builtin_popcountll
-#define vi vector<int> 
+#define vi vector<int>
 #define vii vector<vector<int>>
 #define initValues(i, v) for(auto &i: v) cin >> i;
 #define sz(x) ((int)(x).size())
@@ -47,7 +47,7 @@ template <class T, class V> void _print(pair <T, V> p);
 template <class T> void _print(vector <T> v);
 template <class T> void _print(set <T> v);
 template <class T> void _print(multiset <T> v);
-template <class T, class V, class Comp = less<T>> void _print(const map<T, V, Comp> v) {cerr << "[ ";for(auto i : v) {cerr << "{" << i.ff << ", " << i.ss << "} ";}cerr << "]";}
+template <class T, class V, class Comp = less<T>> void _print(const map<T, V, Comp> v) {cerr << "[ "; for (auto i : v) {cerr << "{" << i.ff << ", " << i.ss << "} ";} cerr << "]";}
 template <class T, class V> void _print(pair <T, V> p) {cerr << "{"; _print(p.ff); cerr << ","; _print(p.ss); cerr << "}";}
 template <class T> void _print(vector <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
 template <class T> void _print(set <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
@@ -57,12 +57,14 @@ template <class T> void _print(multiset <T> v) {cerr << "[ "; for (T i : v) {_pr
 
 void solve()
 {
-	
+
 }
 
 signed main()
 {
 #ifndef ONLINE_JUDGE
+	freopen("input.txt", "r", stdin);
+	freopen("output.txt", "w", stdout);
 	freopen("error.txt", "w", stderr);
 #endif
 	fastio();
